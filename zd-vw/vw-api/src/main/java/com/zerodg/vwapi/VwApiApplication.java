@@ -21,7 +21,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableSwagger2
 @Configuration
-@ComponentScan(basePackages = {"com.zerodg.zdutil.util", "com.zerodg.vwserviceimpl.serviceImpl","com.zerodg.vwapi.controller"})
+@ComponentScan(basePackages = {"com.zerodg.zdutil.util", "com.zerodg.serviceImpl","com.zerodg.vwapi.controller"})
 @MapperScan(value = "com.zerodg.vwdao.mapper")
 @EnableScheduling
 
@@ -48,8 +48,8 @@ public class VwApiApplication {
 	 */
 	public ApiInfo apiInfo(){
 		return new ApiInfoBuilder()
-				.title("springboot结合swagger2构建Restful API")
-				.description("swagger2首版")
+				.title("益家后台网页版API")
+				.description("微信小程序后台管理")
 				.termsOfServiceUrl("www.baidu.com")
 				.contact(new Contact("chenjy","www.baidu.com","1163005753@qq.com"))
 				.version("0.0.1")

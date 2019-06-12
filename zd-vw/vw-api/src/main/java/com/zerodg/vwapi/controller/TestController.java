@@ -3,7 +3,7 @@ package com.zerodg.vwapi.controller;
 
 
 import com.zerodg.vwentity.entity.User;
-import com.zerodg.vwservice.service.UserService;
+import com.zerodg.service.UserService;
 import com.zerodg.zdutil.util.JSONResult;
 import com.zerodg.zdutil.util.TestDTO;
 import io.swagger.annotations.Api;
@@ -90,77 +90,77 @@ public class TestController {
         return  map.get(Long.parseLong(id));
     }
 
-    /**
-     *
-     * @param id
-     * @param user
-     * @return
-     */
-    @ApiOperation(value = "更新用户信息",notes = "根据url的id来指定对象，并且根据传过来的user进行用户基本信息更新")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "用户id", required = true, paramType = "path", dataType = "String"),
-            @ApiImplicitParam(name = "user", value = "用户详情实体类user", required = true, dataType = "User")
-    })
-    @RequestMapping(value = "/A04/{id}",method = RequestMethod.PUT)
-    //@PathVariable 从url中获取参数
-    public String putUser(@PathVariable String id,@RequestBody User user) {
-        Long ID=Long.parseLong(id);
-        User u = map.get(ID);
-        u.setAge(user.getAge());
-        u.setName(user.getName());
-        map.put(ID,u);
-
-        return "用户基本信息已经更新成功";
-
-    }
-
-    /**
-     *
-     * @param id
-     * @return
-     */
-    @ApiOperation(value = "删除用户",notes = "根据url的id来指定对象，进行用户信息删除")
-    @ApiImplicitParam(name = "id",value = "用户id",required = true,dataType = "String",paramType = "path")
-    @RequestMapping(value = "/A05/{id}",method = RequestMethod.DELETE)
-    public String delUser(@PathVariable String id) {
-        map.remove(Long.parseLong(id));
-        return "用户ID为："+ id + " 的用户已经被移除系统";
-    }
-
-    // 用户插入测试
-    @ApiOperation(value="SQL-user插入测试",notes = "插入数据")
-    @ApiImplicitParam(name="user",value="用户对象",required=true,dataType = "User")
-    @RequestMapping(value="/A06",method=RequestMethod.POST)
-    public String userInsertTest(@RequestBody User user){
-        try {
-            userService.insertUser(user);
-            return "用户插入成功";
-        }
-        catch (Exception e){
-            return "用户插入失败";
-        }
-    }
-
-    /**
-     * 用户信息获取
-     */
-    @ApiOperation(value="SQL-user获取测试",notes="获取用户对象")
-//    @ApiImplicitParam(name="id",value="用户id",required = true,dataType = "String")
-    @RequestMapping(value="/A07",method=RequestMethod.GET)
-    public JSONResult getUserTest(TestDTO input){
-        JSONResult<User>jsonResult=new JSONResult<>();
-        try{
-            User user = userService.getUserById(input.getId());
-            if(user==null){
-                throw new Exception();
-            }
-            jsonResult.setData(user);
-            return jsonResult;
-        }
-        catch (Exception e){
-            jsonResult.setMessage("获取失败");
-            return jsonResult;
-        }
-    }
+//    /**
+//     *
+//     * @param id
+//     * @param user
+//     * @return
+//     */
+//    @ApiOperation(value = "更新用户信息",notes = "根据url的id来指定对象，并且根据传过来的user进行用户基本信息更新")
+//    @ApiImplicitParams({
+//            @ApiImplicitParam(name = "id", value = "用户id", required = true, paramType = "path", dataType = "String"),
+//            @ApiImplicitParam(name = "user", value = "用户详情实体类user", required = true, dataType = "User")
+//    })
+//    @RequestMapping(value = "/A04/{id}",method = RequestMethod.PUT)
+//    //@PathVariable 从url中获取参数
+//    public String putUser(@PathVariable String id,@RequestBody User user) {
+//        Long ID=Long.parseLong(id);
+//        User u = map.get(ID);
+//        u.setAge(user.getAge());
+//        u.setName(user.getName());
+//        map.put(ID,u);
+//
+//        return "用户基本信息已经更新成功";
+//
+//    }
+//
+//    /**
+//     *
+//     * @param id
+//     * @return
+//     */
+//    @ApiOperation(value = "删除用户",notes = "根据url的id来指定对象，进行用户信息删除")
+//    @ApiImplicitParam(name = "id",value = "用户id",required = true,dataType = "String",paramType = "path")
+//    @RequestMapping(value = "/A05/{id}",method = RequestMethod.DELETE)
+//    public String delUser(@PathVariable String id) {
+//        map.remove(Long.parseLong(id));
+//        return "用户ID为："+ id + " 的用户已经被移除系统";
+//    }
+//
+//    // 用户插入测试
+//    @ApiOperation(value="SQL-user插入测试",notes = "插入数据")
+//    @ApiImplicitParam(name="user",value="用户对象",required=true,dataType = "User")
+//    @RequestMapping(value="/A06",method=RequestMethod.POST)
+//    public String userInsertTest(@RequestBody User user){
+//        try {
+//            userService.insertUser(user);
+//            return "用户插入成功";
+//        }
+//        catch (Exception e){
+//            return "用户插入失败";
+//        }
+//    }
+//
+//    /**
+//     * 用户信息获取
+//     */
+//    @ApiOperation(value="SQL-user获取测试",notes="获取用户对象")
+////    @ApiImplicitParam(name="id",value="用户id",required = true,dataType = "String")
+//    @RequestMapping(value="/A07",method=RequestMethod.GET)
+//    public JSONResult getUserTest(TestDTO input){
+//        JSONResult<User>jsonResult=new JSONResult<>();
+//        try{
+//            User user = userService.getUserById(input.getId());
+//            if(user==null){
+//                throw new Exception();
+//            }
+//            jsonResult.setData(user);
+//            return jsonResult;
+//        }
+//        catch (Exception e){
+//            jsonResult.setMessage("获取失败");
+//            return jsonResult;
+//        }
+//    }
 
 }

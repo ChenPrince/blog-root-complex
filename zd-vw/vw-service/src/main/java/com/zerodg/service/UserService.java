@@ -1,4 +1,4 @@
-package com.zerodg.vwservice.service;
+package com.zerodg.service;
 
 import com.zerodg.vwentity.entity.User;
 

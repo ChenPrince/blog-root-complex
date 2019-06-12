@@ -1,12 +1,11 @@
-package com.zerodg.vwserviceimpl.serviceImpl;
+package com.zerodg.serviceImpl;
 
 
 import com.zerodg.vwdao.mapper.UserMapper;
 import com.zerodg.vwentity.entity.User;
-import com.zerodg.vwservice.service.UserService;
+import com.zerodg.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
