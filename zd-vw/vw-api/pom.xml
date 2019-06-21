@@ -18,7 +18,7 @@
 	</properties>
 
 	<dependencies>
-		<!--依赖-->
+		<!--模块间依赖-->
 		<dependency>
 			<groupId>com.zerodg</groupId>
 			<artifactId>vw-service</artifactId>
@@ -45,7 +45,7 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
-		<!--=======================-->
+		<!--=======spring boot================-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -56,6 +56,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
+
+
+
+		<!--基本启动包-->
 
 
 		<dependency>
@@ -70,14 +74,39 @@
 			<scope>test</scope>
 		</dependency>
 
+
+
 	</dependencies>
 
 	<build>
 		<plugins>
+			<!---->
+			<plugin>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-maven-plugin</artifactId>
+				<version>1.3.2</version>
+				<!--设置配置文件的位置-->
+				<configuration>
+					<configurationFile>../vw-dao/src/main/resources/generatorConfig.xml</configurationFile>
+					<overwrite>true</overwrite>
+					<verbose>true</verbose>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>5.1.47</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+
 		</plugins>
 	</build>
 

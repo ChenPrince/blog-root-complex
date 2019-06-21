@@ -39,7 +39,6 @@ public class TempBS001Controller {
     }
 
 
-
     @ApiOperation(value="用户List",notes="获取以注册的所有用户",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @RequestMapping(value="/A01",method= RequestMethod.POST)
     public JSONResult BS001A01(){
@@ -58,7 +57,6 @@ public class TempBS001Controller {
     @ApiOperation(value="新增用户",notes="新增用户",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @RequestMapping(value="/A02",method= RequestMethod.POST)
     public JSONResult BS001A02(@RequestBody BS001A01InputDTO input){
-
 
         System.out.println(input.getAvatar()+""+input.getName()+"===="+input);
         JSONResult jsonResult=new JSONResult();

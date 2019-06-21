@@ -18,6 +18,22 @@
 	</properties>
 
 	<dependencies>
+
+		<!-- https://mvnrepository.com/artifact/com.github.dozermapper/dozer-core -->
+		<dependency>
+			<groupId>com.github.dozermapper</groupId>
+			<artifactId>dozer-core</artifactId>
+			<version>6.1.0</version>
+		</dependency>
+
+		<!--&lt;!&ndash; https://mvnrepository.com/artifact/ma.glasnost.orika/orika-core &ndash;&gt;-->
+		<!--<dependency>-->
+			<!--<groupId>ma.glasnost.orika</groupId>-->
+			<!--<artifactId>orika-core</artifactId>-->
+			<!--<version>1.4.5</version>-->
+		<!--</dependency>-->
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -27,6 +43,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.xmlunit</groupId>
+			<artifactId>xmlunit-core</artifactId>
 		</dependency>
 	</dependencies>
 

@@ -18,6 +18,7 @@ import java.util.List;
  **/
 
 @Component
+//全局事务
 @Transactional
 public class BS001ServiceImpl implements BS001Service{
 

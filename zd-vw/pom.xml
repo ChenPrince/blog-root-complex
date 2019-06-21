@@ -7,7 +7,7 @@
 		<artifactId>eroot</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-
+	<packaging>pom</packaging>
 	<groupId>com.zerodg</groupId>
 	<artifactId>zd-vw</artifactId>
 	<version>0.0.1-SNAPSHOT</version>

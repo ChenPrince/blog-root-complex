@@ -2,18 +2,19 @@ package com.zerodg.vwapi.controller;
 
 
 
+import com.zerodg.vwentity.dto.Test.Test_UserInputDTO;
+import com.zerodg.vwentity.entity.Test_User;
 import com.zerodg.vwentity.entity.User;
 import com.zerodg.service.UserService;
+import com.zerodg.zdutil.util.BeanMapper;
 import com.zerodg.zdutil.util.JSONResult;
-import com.zerodg.zdutil.util.TestDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -29,11 +30,13 @@ import java.util.concurrent.ConcurrentHashMap;
 
 //一般来说接口统一都是传一个对象进来，所有的信息由前端分装在一个对象中，再转换为json传到后台
 //所以在下列实例中，使用url传值的并不实用
-//@Valid @RequestBody 实现自动注入
+
+//@Valid @RequestBody 数据验证
+//RequestBody 只能用于post请求
 
 @RestController
 @Api(description = "测试")
-@RequestMapping("/users")
+@RequestMapping("/Test")
 @CrossOrigin
 public class TestController {
     //ConcurrentHashMap ,线程安全，能够接受高并发
@@ -68,7 +71,7 @@ public class TestController {
     //ui内部提示
     @ApiImplicitParam(name="user",value = "用户详情实体",required=true,dataType="User")
     @RequestMapping(value="/A02",method=RequestMethod.POST)
-    public String postUser( @RequestBody User user){
+    public String postUser( @Valid User user){
         System.out.println(user);
         System.out.println(user.getId());
 
@@ -88,6 +91,25 @@ public class TestController {
     @RequestMapping(value = "/A03/{id}",method = RequestMethod.GET)
     public User getUserById(@PathVariable String id) {
         return  map.get(Long.parseLong(id));
+    }
+
+
+
+    @ApiOperation(value = "用户登陆测试", notes = "-", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(method = RequestMethod.GET, value = "/A04")
+    public JSONResult userLogin(Test_UserInputDTO input){
+
+        JSONResult jsonResult =new JSONResult();
+        System.out.println("进来了");
+
+        //TODO
+        //自动转换
+        Test_User test_user= BeanMapper.map(input,Test_User.class);
+
+        System.out.println(input.getName());
+        System.out.println(input.getPassword());
+
+        return jsonResult;
     }
 
 //    /**

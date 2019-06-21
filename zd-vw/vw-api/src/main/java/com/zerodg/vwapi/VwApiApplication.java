@@ -21,10 +21,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableSwagger2
 @Configuration
+//bean包扫描
 @ComponentScan(basePackages = {"com.zerodg.zdutil.util", "com.zerodg.serviceImpl","com.zerodg.vwapi.controller"})
+//sql映射
 @MapperScan(value = "com.zerodg.vwdao.mapper")
 @EnableScheduling
-
 public class VwApiApplication {
 
 	public static void main(String[] args) {
@@ -48,8 +49,8 @@ public class VwApiApplication {
 	 */
 	public ApiInfo apiInfo(){
 		return new ApiInfoBuilder()
-				.title("益家后台网页版API")
-				.description("微信小程序后台管理")
+				.title("ZD API")
+				.description("zd 后台接口")
 				.termsOfServiceUrl("www.baidu.com")
 				.contact(new Contact("chenjy","www.baidu.com","1163005753@qq.com"))
 				.version("0.0.1")
