@@ -5,3 +5,5 @@
 
 spring boot+swagger+mybatis+maven模块化 整合框架
 "# zd-root" 
+
+新增mybatis自动映射生成mapper和dao层
