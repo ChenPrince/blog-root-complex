@@ -13,4 +13,9 @@ public interface ArticleMapper {
     List<Article> selectAll();
 
     int updateByPrimaryKey(Article record);
+
+    List selectSort();
+
+    Integer selectUserId(Integer id);
+
 }

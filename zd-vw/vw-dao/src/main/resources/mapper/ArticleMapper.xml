@@ -43,4 +43,19 @@
     select id, user_id, star, diss, visit, content, sort, create_at
     from article
   </select>
+
+  <!--文章分类信息-->
+  <select id="selectSort" resultMap="BaseResultMap" >
+    SELECT sort
+    FROM t_article
+    GROUP BY sort
+  </select>
+
+  <!--获取文章的作者id-->
+  <select id="selectUserId" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+    SELECT user_id
+    FROM t_article
+    where id=#{value}
+  </select>
+
 </mapper>
