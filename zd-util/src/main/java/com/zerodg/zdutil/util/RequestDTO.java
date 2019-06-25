@@ -9,8 +9,6 @@ import io.swagger.annotations.ApiModelProperty;
  * @create:
  * @date:2018-12-19-01:25
  **/
-
-
 public class RequestDTO {
     @ApiModelProperty(value = "Swagger测试用token", name = "token", dataType = "String")
     private String token;

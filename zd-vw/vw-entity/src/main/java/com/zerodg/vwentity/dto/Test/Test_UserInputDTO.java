@@ -10,7 +10,6 @@ import io.swagger.annotations.ApiModelProperty;
  * @create:
  * @date:2019-06-12-11:45
  **/
-
 public class Test_UserInputDTO  extends RequestDTO {
 
     /**
