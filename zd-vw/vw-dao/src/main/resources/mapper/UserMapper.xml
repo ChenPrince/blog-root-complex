@@ -1,27 +1,56 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zerodg.vwdao.mapper.UserMapper">
-    <resultMap id="BaseResultMap" type="com.zerodg.vwentity.entity.User">
-        <id property="id" column="id"/>
-        <result property="name" column="name"/>
-        <result property="age" column="age"/>
-    </resultMap>
-
-    <!--插入新用户-->
-    <insert id="insertNewUser" parameterType="com.zerodg.vwentity.entity.User">
-        insert into user( name ,age)
-        VALUES (#{user.name} ,#{user.age})
-    </insert>
-
-    <!--通过id获取用户信息-->
-    <select id="getUserByID" resultType="com.zerodg.vwentity.entity.User">
-        select *
-        from user
-        where id=#{id}
-    </select>
-
-    <update id="updateUserById" parameterType="integer">
-
-    </update>
-
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zerodg.vwdao.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.zerodg.vwentity.entity.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="regist_at" property="registAt" jdbcType="DATE" />
+    <result column="sign" property="sign" jdbcType="VARCHAR" />
+    <result column="avatar_url" property="avatarUrl" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zerodg.vwentity.entity.User" >
+    insert into user (id, user_name, password, 
+      name, regist_at, sign, 
+      avatar_url, sex, email, 
+      birthday, area)
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{registAt,jdbcType=DATE}, #{sign,jdbcType=VARCHAR}, 
+      #{avatarUrl,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=DATE}, #{area,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zerodg.vwentity.entity.User" >
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      regist_at = #{registAt,jdbcType=DATE},
+      sign = #{sign,jdbcType=VARCHAR},
+      avatar_url = #{avatarUrl,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      email = #{email,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      area = #{area,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, user_name, password, name, regist_at, sign, avatar_url, sex, email, birthday, 
+    area
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, user_name, password, name, regist_at, sign, avatar_url, sex, email, birthday, 
+    area
+    from user
+  </select>
 </mapper>

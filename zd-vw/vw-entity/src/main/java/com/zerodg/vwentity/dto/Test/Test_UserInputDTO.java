@@ -1,6 +1,5 @@
 package com.zerodg.vwentity.dto.Test;
 
-import com.zerodg.vwentity.entity.Test_User;
 import com.zerodg.zdutil.util.RequestDTO;
 import io.swagger.annotations.ApiModelProperty;
 
