@@ -48,8 +48,12 @@ public class SY01ServiceImpl implements SY01Service {
         }*/
         for (Carousel carousel : carouselList) {
             //处理时间
+            SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
+            String str=sf.format(carousel.getCreateAt());
+            carousel.setCreateTime(str);
         }
-        //System.out.println("jg:"+list);
+        list.setArticlefousList(carouselList);
+        list.setCarouseList(carouselList);
         return list;
     }
 
