@@ -41,8 +41,12 @@ public class SY01ServiceImpl implements SY01Service {
 
         for (Carousel carousel : carouselList) {
             //处理时间
+            SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
+            String str=sf.format(carousel.getCreateAt());
+            carousel.setCreateTime(str);
         }
-        //System.out.println("jg:"+list);
+        list.setArticlefousList(carouselList);
+        list.setCarouseList(carouselList);
         return list;
     }
 
@@ -55,8 +59,8 @@ public class SY01ServiceImpl implements SY01Service {
 
         for (Article articlelist : Articlelists) {
             //对文章内容进行处理
-            if (articlelist.getContent().length() > 100) {
-                articlelist.setContent(articlelist.getContent().substring(0, 100) + "....");
+            if (articlelist.getContent().length() >25 ) {
+                articlelist.setContent(articlelist.getContent().substring(0, 25) + "....");
             }
             //添加用户名
             User user = userMapper.selectByPrimaryKey(articlelist.getUserId());
@@ -84,8 +88,7 @@ public class SY01ServiceImpl implements SY01Service {
 
             stringList.add(articlelist.getSort());
         }
-        /*List<String> articleString=articleMapper.selectSort();
-        articleString.*/
+
         lists.setListSort(stringList);
         return lists;
     }

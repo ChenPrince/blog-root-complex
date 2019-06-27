@@ -14,6 +14,26 @@ public class Carousel implements Serializable {
 
     private Integer isSelect;
 
+    private String createTime;
+
+    private Integer picture_id;
+
+    public Integer getPicture_id() {
+        return picture_id;
+    }
+
+    public void setPicture_id(Integer picture_id) {
+        this.picture_id = picture_id;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
