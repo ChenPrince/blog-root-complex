@@ -103,8 +103,14 @@ public class SY01ServiceImpl implements SY01Service {
     @Override
     public List<Article> selectBySort(String sort) {
 
-        List<Article> articleList = articleMapper.selectBySort(sort);
-        return articleList;
+        List<Article> articleLists = articleMapper.selectBySort(sort);
+        for (Article articlelist : articleLists) {
+            //对文章内容进行处理
+            if (articlelist.getContent().length() > 25) {
+                articlelist.setContent(articlelist.getContent().substring(0, 25) + "....");
+            }
+        }
+        return articleLists;
     }
     /**
      * 通过时间排序
