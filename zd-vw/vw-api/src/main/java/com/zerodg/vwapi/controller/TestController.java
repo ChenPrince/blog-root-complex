@@ -4,7 +4,9 @@ package com.zerodg.vwapi.controller;
 
 import com.zerodg.service.TestService;
 
+import com.zerodg.vwentity.dto.Test.Test_UserInputDTO;
 import com.zerodg.vwentity.entity.TestUser;
+import com.zerodg.vwentity.entity.User;
 import com.zerodg.zdutil.util.BeanMapper;
 import com.zerodg.zdutil.util.JSONResult;
 import com.zerodg.zdutil.util.TestDTO;
@@ -88,7 +90,7 @@ public class TestController {
      * @return
      */
     @ApiOperation(value = "获取用户详情",notes = "根据url的id来获取用户基本信息")
-    @ApiImplicitParam(name = "id",value = "用户id",required = true,dataType = "String",paramType = "path")
+//    @ApiImplicitParam(name = "id",value = "用户id",required = true,dataType = "String",paramType = "path")
     @RequestMapping(value = "/A03/{id}",method = RequestMethod.GET)
     public TestUser getTestUserById(@PathVariable String id) {
         return  map.get(Long.parseLong(id));
@@ -96,22 +98,25 @@ public class TestController {
 
 
 
-//    @ApiOperation(value = "用户登陆测试", notes = "-", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-//    @RequestMapping(method = RequestMethod.GET, value = "/A04")
-//    public JSONResult userLogin(Test_TestUserInputDTO input){
-//
-//        JSONResult jsonResult =new JSONResult();
-//        System.out.println("进来了");
-//
-//        //TODO
-//        //自动转换
-//        TestUser test_user= BeanMapper.map(input,TestUser.class);
-//
-//        System.out.println(input.getName());
-//        System.out.println(input.getPassword());
-//
-//        return jsonResult;
-//    }
+    @ApiOperation(value = "用户登陆测试", notes = "-", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(method = RequestMethod.GET, value = "/A04")
+    public JSONResult userLogin(Test_UserInputDTO input){
+
+        JSONResult jsonResult =new JSONResult();
+        System.out.println("进来了");
+
+        User user = testService.getUserById(1);
+        System.out.println("==="+user.getName());
+
+        //TODO
+        //自动转换
+        TestUser test_user= BeanMapper.map(input,TestUser.class);
+
+        System.out.println(input.getName());
+        System.out.println(input.getPassword());
+
+        return jsonResult;
+    }
 
     /**
      *
@@ -120,10 +125,10 @@ public class TestController {
      * @return
      */
     @ApiOperation(value = "更新用户信息",notes = "根据url的id来指定对象，并且根据传过来的user进行用户基本信息更新")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "用户id", required = true, paramType = "path", dataType = "String"),
-            @ApiImplicitParam(name = "user", value = "用户详情实体类user", required = true, dataType = "TestUser")
-    })
+//    @ApiImplicitParams({
+//            @ApiImplicitParam(name = "id", value = "用户id", required = true, paramType = "path", dataType = "String"),
+//            @ApiImplicitParam(name = "user", value = "用户详情实体类user", required = true, dataType = "TestUser")
+//    })
     @RequestMapping(value = "/A04/{id}",method = RequestMethod.PUT)
     //@PathVariable 从url中获取参数
     public String putTestUser(@PathVariable String id,@RequestBody TestUser user) {
@@ -143,7 +148,7 @@ public class TestController {
      * @return
      */
     @ApiOperation(value = "删除用户",notes = "根据url的id来指定对象，进行用户信息删除")
-    @ApiImplicitParam(name = "id",value = "用户id",required = true,dataType = "String",paramType = "path")
+//    @ApiImplicitParam(name = "id",value = "用户id",required = true,dataType = "String",paramType = "path")
     @RequestMapping(value = "/A05/{id}",method = RequestMethod.DELETE)
     public String delTestUser(@PathVariable String id) {
         map.remove(Long.parseLong(id));
@@ -152,7 +157,7 @@ public class TestController {
 
     // 用户插入测试
     @ApiOperation(value="SQL-user插入测试",notes = "插入数据")
-    @ApiImplicitParam(name="user",value="用户对象",required=true,dataType = "TestUser")
+//    @ApiImplicitParam(name="user",value="用户对象",required=true,dataType = "TestUser")
     @RequestMapping(value="/A06",method=RequestMethod.POST)
     public String userInsertTest(@RequestBody TestUser user){
         try {
