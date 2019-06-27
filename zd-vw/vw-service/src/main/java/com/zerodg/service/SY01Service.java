@@ -18,4 +18,10 @@ public interface SY01Service {
     SY01ArticleDTO getArticleList();
 
     SY01SortDTO getSortList();
+
+    List<Article> SelectArticleSortByStar();
+
+    List<Article> SelectArticleSortByTime();
+
+    List<Article> selectBySort(String sort);
 }

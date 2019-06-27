@@ -23,9 +23,4 @@ public interface ArticleService {
 
     ArticleAuthorDTO getUserById(Integer user_id);
 
-    List<Article> selectBySort(String sort);
-
-    List<Article> SelectArticleSortByTime();
-
-    List<Article> SelectArticleSortByStar();
 }
