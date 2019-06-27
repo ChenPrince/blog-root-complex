@@ -26,7 +26,7 @@ import javax.validation.Valid;
 @SuppressWarnings("ALL")
 @RestController
 @Api(description = "文章")
-@RequestMapping("/article")
+@RequestMapping("/Article")
 @CrossOrigin
 public class ArticleController {
 
@@ -109,6 +109,19 @@ public class ArticleController {
             jsonResult.setMessage(new Message("文章评论查找失败"));
             return jsonResult;
         }
+    }
+    @ApiOperation(value = "插入文章",notes = "插入文章")
+    @RequestMapping(value = "/insertArticle",method = RequestMethod.GET)
+    public JSONResult insertArticle(@Valid ArticleInsertDTO input) {
+        JSONResult jsonResult = new JSONResult();
+        Integer userId = input.getUserId();
+        String title = input.getTitle();
+        String content = input.getContent();
+
+        articleService.insertArticle(userId,title,content);
+
+        jsonResult.setMessage("添加成功");
+        return jsonResult;
     }
 
 }

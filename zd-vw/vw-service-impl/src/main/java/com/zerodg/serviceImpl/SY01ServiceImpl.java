@@ -13,6 +13,7 @@ import com.zerodg.vwentity.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,13 +24,13 @@ import java.util.List;
 @Service
 public class SY01ServiceImpl implements SY01Service {
 
-    @Autowired
+    @Resource
     private CarouselMapper carouselMapper;
 
-    @Autowired
+    @Resource
     private ArticleMapper articleMapper;
 
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
     //通过判断is_select输入相应的轮播图的信息
@@ -37,15 +38,7 @@ public class SY01ServiceImpl implements SY01Service {
     public SY01SlideshowDTO getCarouselList() {
         SY01SlideshowDTO list=new SY01SlideshowDTO();
         List<Carousel> carouselList = carouselMapper.selectByIs_select();
-        /*for (Carousel carousel : carouselList) {
-            SY01SlideshowDTO sy01SlideshowDTO = new SY01SlideshowDTO();
-            sy01SlideshowDTO.setId(carousel.getId());
-            sy01SlideshowDTO.setArticleId(carousel.getArticleId());
-            sy01SlideshowDTO.setCreateAt(carousel.getCreateAt());
-            sy01SlideshowDTO.setTitle(carousel.getTitle());
-            sy01SlideshowDTO.setIsSelect(carousel.getIsSelect());
-            list.add(sy01SlideshowDTO);
-        }*/
+
         for (Carousel carousel : carouselList) {
             //处理时间
         }
@@ -76,23 +69,6 @@ public class SY01ServiceImpl implements SY01Service {
         }
         lists.setArticleList(Articlelists);
 
-        /*for (Article list : Articlelist) {
-            if(list.getContent().length()>100)
-            {
-                list.setContent(list.getContent().substring(0,100)+"....");
-            }
-            SY01ArticleDTO sy01ArticleDTO = new SY01ArticleDTO();
-            sy01ArticleDTO.setId(list.getId());
-            sy01ArticleDTO.setContent(list.getContent());
-            sy01ArticleDTO.setCreateAt(list.getCreateAt());
-            sy01ArticleDTO.setDiss(list.getDiss());
-            sy01ArticleDTO.setSort(list.getSort());
-            sy01ArticleDTO.setStar(list.getStar());
-            sy01ArticleDTO.setUserId(list.getUserId());
-            sy01ArticleDTO.setVisit(list.getVisit());
-            sy01ArticleDTO.setTitle(list.getTitle());
-            lists.add(sy01ArticleDTO);
-        }*/
 
         return lists;
     }
@@ -105,9 +81,7 @@ public class SY01ServiceImpl implements SY01Service {
         List<Article> articlelists=articleMapper.selectSort();
         List<String> stringList=new ArrayList<>();
         for (Article articlelist : articlelists) {
-            //SY01SortDTO sy01SortDTO = new SY01SortDTO();
-            //sy01SortDTO.setSort(articlelist.getSort());
-            //lists.add(sy01SortDTO);
+
             stringList.add(articlelist.getSort());
         }
         /*List<String> articleString=articleMapper.selectSort();
@@ -144,6 +118,7 @@ public class SY01ServiceImpl implements SY01Service {
         for (Article article : articleList) {
             if (i < count) {
                 articles.add(article);
+                System.out.println(article.getId());
             }
             i++;
         }

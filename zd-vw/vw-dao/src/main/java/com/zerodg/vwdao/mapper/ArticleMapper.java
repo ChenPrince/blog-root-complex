@@ -1,6 +1,8 @@
 package com.zerodg.vwdao.mapper;
 
 import com.zerodg.vwentity.entity.Article;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 public interface ArticleMapper {
@@ -24,4 +26,5 @@ public interface ArticleMapper {
 
     Integer selectUserId(Integer id);
 
+    void insertArticle(@Param("userId")Integer userId,@Param("content")String content,@Param("time")String time,@Param("title")String title);
 }

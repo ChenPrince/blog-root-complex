@@ -78,4 +78,9 @@
     where id=#{value}
   </select>
 
+  <insert id="insertArticle">
+    INSERT INTO article(user_id,content,create_at,title)
+    values (#{userId},#{content,jdbcType=VARCHAR},#{time,jdbcType=DATE},#{title,jdbcType=DATE})
+  </insert>
+
 </mapper>
