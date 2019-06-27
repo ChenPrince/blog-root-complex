@@ -35,4 +35,10 @@
     select id, article_id, title, create_at, is_select
     from carousel
   </select>
+
+  <select id="selectByIs_select" resultMap="BaseResultMap" >
+    select id, article_id, title, create_at,is_select
+    from carousel
+    where is_select=1
+  </select>
 </mapper>

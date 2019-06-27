@@ -1,9 +1,12 @@
-package com.zerodg.vwentity.entity;
+package com.zerodg.vwentity.dto.ZC01RegistInputDTO;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class User implements Serializable {
+/**
+ * create by  LZH on 2019/6/26
+ */
+public class ZC01RegistInputDTO {
+
     private Integer id;
 
     private String userName;
@@ -26,27 +29,6 @@ public class User implements Serializable {
 
     private String area;
 
-    private String birthdayTime;
-    private String registTime;
-
-    private static final long serialVersionUID = 1L;
-
-    public String getRegistTime() {
-        return registTime;
-    }
-
-    public void setRegistTime(String registTime) {
-        this.registTime = registTime;
-    }
-
-    public String getBirthdayTime() {
-        return birthdayTime;
-    }
-
-    public void setBirthdayTime(String birthdayTime) {
-        this.birthdayTime = birthdayTime;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -60,7 +42,7 @@ public class User implements Serializable {
     }
 
     public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -68,7 +50,7 @@ public class User implements Serializable {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password;
     }
 
     public String getName() {
@@ -76,7 +58,7 @@ public class User implements Serializable {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public Date getRegistAt() {
@@ -92,7 +74,7 @@ public class User implements Serializable {
     }
 
     public void setSign(String sign) {
-        this.sign = sign == null ? null : sign.trim();
+        this.sign = sign;
     }
 
     public String getAvatarUrl() {
@@ -100,7 +82,7 @@ public class User implements Serializable {
     }
 
     public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl == null ? null : avatarUrl.trim();
+        this.avatarUrl = avatarUrl;
     }
 
     public Integer getSex() {
@@ -116,7 +98,7 @@ public class User implements Serializable {
     }
 
     public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+        this.email = email;
     }
 
     public Date getBirthday() {
@@ -132,6 +114,6 @@ public class User implements Serializable {
     }
 
     public void setArea(String area) {
-        this.area = area == null ? null : area.trim();
+        this.area = area;
     }
 }

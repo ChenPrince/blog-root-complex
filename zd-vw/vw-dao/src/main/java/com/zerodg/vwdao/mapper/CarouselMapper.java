@@ -13,4 +13,6 @@ public interface CarouselMapper {
     List<Carousel> selectAll();
 
     int updateByPrimaryKey(Carousel record);
+
+    List<Carousel> selectByIs_select();
 }

@@ -1,9 +1,8 @@
-package com.zerodg.vwentity.entity;
+package com.zerodg.vwentity.dto.SY01SortInputDTO;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Article implements Serializable {
+public class SY01SortDTO {
     private Integer id;
 
     private Integer userId;
@@ -20,37 +19,7 @@ public class Article implements Serializable {
 
     private Date createAt;
 
-    private String title;
-
-    private String createTime;
-
-    private String userName;
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
-
     private static final long serialVersionUID = 1L;
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     public Integer getId() {
         return id;
@@ -115,6 +84,4 @@ public class Article implements Serializable {
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
     }
-
-
 }

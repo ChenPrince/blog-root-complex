@@ -1,9 +1,8 @@
-package com.zerodg.vwentity.entity;
+package com.zerodg.vwentity.dto.Article;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Article implements Serializable {
+public class ArticleContentDTO {
     private Integer id;
 
     private Integer userId;
@@ -20,18 +19,16 @@ public class Article implements Serializable {
 
     private Date createAt;
 
-    private String title;
-
     private String createTime;
 
-    private String userName;
+    private String title;
 
-    public String getUserName() {
-        return userName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getCreateTime() {
@@ -40,16 +37,6 @@ public class Article implements Serializable {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
-    }
-
-    private static final long serialVersionUID = 1L;
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public Integer getId() {
@@ -97,7 +84,7 @@ public class Article implements Serializable {
     }
 
     public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+        this.content = content;
     }
 
     public String getSort() {
@@ -105,7 +92,7 @@ public class Article implements Serializable {
     }
 
     public void setSort(String sort) {
-        this.sort = sort == null ? null : sort.trim();
+        this.sort = sort;
     }
 
     public Date getCreateAt() {
@@ -115,6 +102,4 @@ public class Article implements Serializable {
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
     }
-
-
 }
