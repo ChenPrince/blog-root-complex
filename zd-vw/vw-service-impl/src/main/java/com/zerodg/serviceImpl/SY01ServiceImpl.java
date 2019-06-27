@@ -115,4 +115,59 @@ public class SY01ServiceImpl implements SY01Service {
         lists.setListSort(stringList);
         return lists;
     }
+
+    /**
+     * 点击分类获取文章
+     *
+     * @param sort
+     * @return
+     */
+
+    @Override
+    public List<Article> selectBySort(String sort) {
+
+        List<Article> articleList = articleMapper.selectBySort(sort);
+        return articleList;
+    }
+    /**
+     * 通过时间排序
+     *
+     * @return
+     */
+    @Override
+    public List<Article> SelectArticleSortByTime() {
+
+        List<Article> articleList = articleMapper.selectArticleByTime();
+        List<Article> articles = new ArrayList<>();
+
+        Integer count = 5, i = 0;
+        for (Article article : articleList) {
+            if (i < count) {
+                articles.add(article);
+            }
+            i++;
+        }
+        return articles;
+    }
+    /**
+     * 通过点赞排序
+     *
+     * @return
+     */
+    @Override
+    public List<Article> SelectArticleSortByStar() {
+        List<Article> articleList = articleMapper.selectArticleByStar();
+        List<Article> articles = new ArrayList<>();
+
+        Integer count = 5, i = 0;
+        for (Article article : articleList) {
+            if (i < count) {
+                articles.add(article);
+            }
+            i++;
+        }
+        return articles;
+    }
+
+
 }

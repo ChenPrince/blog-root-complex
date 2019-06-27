@@ -4,6 +4,9 @@ import com.zerodg.service.SY01Service;
 import com.zerodg.vwentity.dto.SY.SY01ArticleDTO;
 import com.zerodg.vwentity.dto.SY.SY01SlideshowDTO;
 import com.zerodg.vwentity.dto.SY.SY01SortDTO;
+import com.zerodg.vwentity.dto.SY01LoveInputDTO.SY01LoveInputDTO;
+import com.zerodg.vwentity.dto.SY01SortInputDTO.SY01SortInputDTO;
+import com.zerodg.vwentity.dto.SY01TimeInputDTO.SY01TimeInputDTO;
 import com.zerodg.vwentity.entity.Article;
 import com.zerodg.vwentity.entity.Carousel;
 import com.zerodg.zdutil.util.JSONResult;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,5 +94,40 @@ public class SY01Controller {
             return jsonResult;
         }
     }
+
+    @ApiOperation(value="首页文章分类",notes="首页文章分类",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value="/sort",method= RequestMethod.GET)
+    public  JSONResult login(@Valid SY01SortInputDTO input){
+
+        JSONResult jsonResult=new JSONResult();
+
+        List<Article> articleList=sy01Service.selectBySort(input.getSort());
+        jsonResult.setData(articleList);
+        return jsonResult;
+    }
+    @ApiOperation(value="首页右侧文章推荐（时间）",notes="首页右侧文章推荐（时间）",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value="/time",method= RequestMethod.GET)
+    public JSONResult time(@Valid SY01TimeInputDTO input){
+
+        JSONResult jsonResult=new JSONResult();
+        List<Article> articleList=sy01Service.SelectArticleSortByTime();
+        jsonResult.setData(articleList);
+
+        return jsonResult;
+
+    }
+
+    @ApiOperation(value="首页右侧文章推荐（点赞）",notes="首页右侧文章推荐（点赞）",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value="/love",method= RequestMethod.GET)
+    public JSONResult love(@Valid SY01LoveInputDTO input) {
+
+        JSONResult jsonResult = new JSONResult();
+        List<Article> articleList = sy01Service.SelectArticleSortByStar();
+        jsonResult.setData(articleList);
+
+        return jsonResult;
+
+    }
+
 
 }

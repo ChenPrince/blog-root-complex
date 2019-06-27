@@ -24,19 +24,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
- *create by loser on 2019/6/25
+ *create by LZH on 2019/6/25
  */
 @Service
 @Transactional
 public class ArticleServiceImpl implements ArticleService {
 
-    @Autowired
+    @Resource
     private ArticleMapper articleMapper;
 
-    @Autowired
+    @Resource
     private CommentMapper commentMapper;
 
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
 
@@ -97,27 +97,7 @@ public class ArticleServiceImpl implements ArticleService {
         }
 
         articleCommentDTOList.setCommentList(commentLists);
-        /*for (Comment commentList : commentLists) {
-            //System.out.println("id=="+commentList.getUserId());
-            //System.out.println("*****************************");
-            //System.out.println(commentList.getCreateAt());
-            //Comment comment = commentMapper.selectByPrimaryKey(commentList.getId());//通过评论id获取评论信息
 
-            /*if(commentList.getComment().length() > 100){
-                commentList.setComment(commentList.getComment().substring(0,100)+"...");
-            }*/
-        /*
-            ArticleCommentDTO articleCommentDTO = new ArticleCommentDTO();
-            articleCommentDTO.setId(commentList.getId());
-            articleCommentDTO.setArticleId(commentList.getArticleId());
-            articleCommentDTO.setComment(commentList.getComment());
-            articleCommentDTO.setDiss(commentList.getDiss());
-            articleCommentDTO.setStar(commentList.getStar());
-            articleCommentDTO.setUserId(commentList.getUserId());
-            articleCommentDTO.setCreateAt(commentList.getCreateAt());
-
-            articleCommentDTOList.add(articleCommentDTO);
-        }*/
 
         return articleCommentDTOList;
     }
@@ -154,44 +134,5 @@ public class ArticleServiceImpl implements ArticleService {
 
         return articleAuthorDTO;
     }
-
-    @Override
-    public List<Article> selectBySort(String sort) {
-
-        List<Article> articleList = articleMapper.selectBySort(sort);
-        return articleList;
-    }
-
-    @Override
-    public List<Article> SelectArticleSortByTime() {
-
-        List<Article> articleList = articleMapper.selectArticleByTime();
-        List<Article> articles = new ArrayList<>();
-
-        Integer count = 5, i = 0;
-        for (Article article : articleList) {
-            if (i < count) {
-                articles.add(article);
-            }
-            i++;
-        }
-        return articles;
-    }
-
-    @Override
-    public List<Article> SelectArticleSortByStar() {
-        List<Article> articleList = articleMapper.selectArticleByStar();
-        List<Article> articles = new ArrayList<>();
-
-        Integer count = 5, i = 0;
-        for (Article article : articleList) {
-            if (i < count) {
-                articles.add(article);
-            }
-            i++;
-        }
-        return articles;
-    }
-
 
 }
