@@ -47,7 +47,7 @@ spring:
 
 server:
 # 访问端口
-  port: 8082
+  port: 8088
 
 # 整合mybatis
 mybatis:

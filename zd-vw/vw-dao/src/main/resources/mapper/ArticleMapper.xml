@@ -43,4 +43,22 @@
     select id, user_id, star, diss, visit, content, sort, create_at
     from article
   </select>
+
+  <select id="selectBySort" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select *
+    from article
+    where sort=#{value}
+  </select>
+
+  <select id="selectArticleByTime" resultMap="BaseResultMap">
+    SELECT title
+    from article
+    ORDER BY create_at
+  </select>
+
+  <select id="selectArticleByStar" resultMap="BaseResultMap">
+    SELECT title
+    from article
+    ORDER BY star
+  </select>
 </mapper>
