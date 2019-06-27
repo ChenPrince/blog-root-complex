@@ -53,13 +53,13 @@
   </select>
 
   <select id="selectArticleByTime" resultMap="BaseResultMap">
-    SELECT title
+    SELECT title,id
     from article
     ORDER BY create_at
   </select>
 
   <select id="selectArticleByStar" resultMap="BaseResultMap">
-    SELECT title
+    SELECT title,id
     from article
     ORDER BY star
   </select>
@@ -77,5 +77,10 @@
     FROM article
     where id=#{value}
   </select>
+
+  <insert id="insertArticle">
+    INSERT INTO article(user_id,content,create_at,title)
+    values (#{userId},#{content,jdbcType=VARCHAR},#{time,jdbcType=DATE},#{title,jdbcType=DATE})
+  </insert>
 
 </mapper>
