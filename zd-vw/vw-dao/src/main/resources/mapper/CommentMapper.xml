@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zerodg.vwdao.mapper.CommentMapper" >
+  <resultMap id="BaseResultMap" type="com.zerodg.vwentity.entity.Comment" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="article_id" property="articleId" jdbcType="INTEGER" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+    <result column="star" property="star" jdbcType="INTEGER" />
+    <result column="diss" property="diss" jdbcType="INTEGER" />
+    <result column="create_at" property="createAt" jdbcType="DATE" />
+    <result column="diss" property="diss" jdbcType="INTEGER" />
+  </resultMap>
+  <!--<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from comment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zerodg.vwentity.entity.Article" >
+    insert into comment (id, user_id, article_id,
+      comment, star,  create_at)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{articleId,jdbcType=INTEGER},
+      #{star,jdbcType=INTEGER}, #{comment,jdbcType=INTEGER}, #{createAt,jdbcType=DATE})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zerodg.vwentity.entity.Article" >
+    update comment
+    set user_id = #{userId,jdbcType=INTEGER},
+      article_id = #{articleId,jdbcType=INTEGER},
+      diss = #{diss,jdbcType=INTEGER},
+      star = #{star,jdbcType=INTEGER},
+      create_at = #{createAt,jdbcType=DATE},
+      comment=#{comment}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, user_id, article_id, comment, star,  create_at, diss
+    from comment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, user_id, article_id, comment, star, diss, create_at
+    from comment
+  </select>-->
+
+  <!--通过文章id获取评论id信息-->
+  <select id="selectIdByArticleid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, user_id, article_id, comment, star,  diss, create_at
+    from comment
+    where article_id = #{value} AND parent_id=0
+  </select>
+
+</mapper>

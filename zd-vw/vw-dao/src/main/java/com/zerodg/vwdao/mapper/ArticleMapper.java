@@ -19,4 +19,9 @@ public interface ArticleMapper {
     List<Article> selectArticleByTime();
 
     List<Article> selectArticleByStar();
+
+    List<Article> selectSort();
+
+    Integer selectUserId(Integer id);
+
 }
