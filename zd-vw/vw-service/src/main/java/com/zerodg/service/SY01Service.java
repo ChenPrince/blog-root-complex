@@ -1,5 +1,8 @@
 package com.zerodg.service;
 
+import com.zerodg.vwentity.dto.SY.SY01ArticleDTO;
+import com.zerodg.vwentity.dto.SY.SY01SlideshowDTO;
+import com.zerodg.vwentity.dto.SY.SY01SortDTO;
 import com.zerodg.vwentity.entity.Article;
 import com.zerodg.vwentity.entity.Carousel;
 
@@ -10,9 +13,9 @@ import java.util.List;
  */
 public interface SY01Service {
 
-    List<Carousel> getCarouselList();
+    SY01SlideshowDTO getCarouselList();
 
-    List<Article> getArticleList();
+    SY01ArticleDTO getArticleList();
 
-    List getSortList();
+    SY01SortDTO getSortList();
 }

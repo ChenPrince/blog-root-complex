@@ -1,11 +1,33 @@
 package com.zerodg.vwentity.dto.SY;
 
+import com.zerodg.vwentity.entity.Article;
+
 import java.util.Date;
+import java.util.List;
 
 /**
  * create by Administrator on 15:28 2019/6/25 0025
  */
-public class SYSlideshowDTO {
+public class SY01SlideshowDTO {
+    private List<Article> carouseList;
+    private List<Article> articlefousList;
+
+    public List<Article> getCarouseList() {
+        return carouseList;
+    }
+
+    public void setCarouseList(List<Article> carouseList) {
+        this.carouseList = carouseList;
+    }
+
+    public List<Article> getArticlefousList() {
+        return articlefousList;
+    }
+
+    public void setArticlefousList(List<Article> articlefousList) {
+        this.articlefousList = articlefousList;
+    }
+
     private Integer id;
 
     private Integer articleId;
@@ -13,6 +35,16 @@ public class SYSlideshowDTO {
     private String title;
 
     private Date createAt;
+
+    private Integer isSelect;
+
+    public Integer getIsSelect() {
+        return isSelect;
+    }
+
+    public void setIsSelect(Integer isSelect) {
+        this.isSelect = isSelect;
+    }
 
     public Integer getId() {
         return id;

@@ -1,21 +1,35 @@
-package com.zerodg.vwentity.entity;
+package com.zerodg.vwentity.dto.Article;
 
 import java.util.Date;
 
-/**
- * create by Administrator on 18:01 2019/6/25 0025
- */
-public class Comment {
+public class ArticleContentDTO {
     private Integer id;
+
     private Integer userId;
-    private Integer articleId;
-    private String comment;
+
     private Integer star;
+
     private Integer diss;
+
+    private Integer visit;
+
+    private String content;
+
+    private String sort;
+
     private Date createAt;
-    private Integer parentId;
 
     private String createTime;
+
+    private String title;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public String getCreateTime() {
         return createTime;
@@ -23,14 +37,6 @@ public class Comment {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
-    }
-
-    public Integer getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
     }
 
     public Integer getId() {
@@ -49,22 +55,6 @@ public class Comment {
         this.userId = userId;
     }
 
-    public Integer getArticleId() {
-        return articleId;
-    }
-
-    public void setArticleId(Integer articleId) {
-        this.articleId = articleId;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
     public Integer getStar() {
         return star;
     }
@@ -79,6 +69,30 @@ public class Comment {
 
     public void setDiss(Integer diss) {
         this.diss = diss;
+    }
+
+    public Integer getVisit() {
+        return visit;
+    }
+
+    public void setVisit(Integer visit) {
+        this.visit = visit;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
     }
 
     public Date getCreateAt() {

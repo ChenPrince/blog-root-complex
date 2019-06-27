@@ -10,6 +10,8 @@
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="sort" property="sort" jdbcType="VARCHAR" />
     <result column="create_at" property="createAt" jdbcType="DATE" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from article
@@ -35,26 +37,26 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select id, user_id, star, diss, visit, content, sort, create_at
+    select id, user_id, star, diss, visit, content, sort, create_at, title
     from article
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select id, user_id, star, diss, visit, content, sort, create_at
+    select id, user_id, star, diss, visit, content, sort, title, create_at
     from article
   </select>
 
   <!--文章分类信息-->
   <select id="selectSort" resultMap="BaseResultMap" >
     SELECT sort
-    FROM t_article
+    FROM article
     GROUP BY sort
   </select>
 
   <!--获取文章的作者id-->
   <select id="selectUserId" resultType="java.lang.Integer" parameterType="java.lang.Integer">
     SELECT user_id
-    FROM t_article
+    FROM article
     where id=#{value}
   </select>
 
