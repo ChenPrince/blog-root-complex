@@ -53,4 +53,15 @@
     area
     from user
   </select>
+
+  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select *
+    from user
+    where user_name=#{value}
+  </select>
+
+  <insert id="insertRegist" >
+    insert into user (user_name, password,email)
+    values (#{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR})
+  </insert>
 </mapper>
