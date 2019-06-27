@@ -36,8 +36,8 @@ import java.util.List;
  */
 @SuppressWarnings("ALL")
 @RestController
-@Api(description = "首页")
-@RequestMapping("/SY01")
+@Api(description = "文章详情")
+@RequestMapping("/Article")
 @CrossOrigin
 public class ArticleController {
 
