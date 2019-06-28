@@ -28,7 +28,7 @@ import java.util.List;
  * create by Administrator on 13:07 2019/6/25 0025
  */
 @RestController
-@Api(description = "首页")
+@Api(description = "显示首页")
 @RequestMapping("/SY01")
 @CrossOrigin
 public class SY01Controller {
