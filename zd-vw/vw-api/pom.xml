@@ -81,30 +81,63 @@
 	<build>
 		<plugins>
 			<!---->
-			<plugin>
-				<groupId>org.mybatis.generator</groupId>
-				<artifactId>mybatis-generator-maven-plugin</artifactId>
-				<version>1.3.2</version>
-				<!--设置配置文件的位置-->
-				<configuration>
-					<configurationFile>../vw-dao/src/main/resources/generatorConfig.xml</configurationFile>
-					<overwrite>true</overwrite>
-					<verbose>true</verbose>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>mysql</groupId>
-						<artifactId>mysql-connector-java</artifactId>
-						<version>5.1.47</version>
-					</dependency>
-				</dependencies>
-			</plugin>
+			<!--<plugin>-->
+				<!--<groupId>org.mybatis.generator</groupId>-->
+				<!--<artifactId>mybatis-generator-maven-plugin</artifactId>-->
+				<!--<version>1.3.2</version>-->
+				<!--&lt;!&ndash;设置配置文件的位置&ndash;&gt;-->
+				<!--<configuration>-->
+					<!--<configurationFile>../vw-dao/src/main/resources/generatorConfig.xml</configurationFile>-->
+					<!--<overwrite>true</overwrite>-->
+					<!--<verbose>true</verbose>-->
+				<!--</configuration>-->
+				<!--<dependencies>-->
+					<!--<dependency>-->
+						<!--<groupId>mysql</groupId>-->
+						<!--<artifactId>mysql-connector-java</artifactId>-->
+						<!--<version>5.1.47</version>-->
+					<!--</dependency>-->
+				<!--</dependencies>-->
+			<!--</plugin>-->
 
 
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<!-- 指定该Main Class为全局的唯一入口 -->
+					<mainClass>com.zerodg.vwapi.VwApiApplication</mainClass>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal><!--可以把依赖的包都打包到生成的Jar包中-->
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!--<plugin>-->
+				<!--<groupId>com.spotify</groupId>-->
+				<!--<artifactId>docker-maven-plugin</artifactId>-->
+				<!--<version>1.0.0</version>-->
+				<!--&lt;!&ndash;<configuration>&ndash;&gt;-->
+					<!--&lt;!&ndash;<imageName>${docker.image.prefix}/${project.artifactId}</imageName>&ndash;&gt;-->
+					<!--&lt;!&ndash;<dockerDirectory>src/main/docker</dockerDirectory>&ndash;&gt;-->
+					<!--&lt;!&ndash;<resources>&ndash;&gt;-->
+						<!--&lt;!&ndash;<resource>&ndash;&gt;-->
+							<!--&lt;!&ndash;<targetPath>/</targetPath>&ndash;&gt;-->
+							<!--&lt;!&ndash;<directory>${project.build.directory}</directory>&ndash;&gt;-->
+							<!--&lt;!&ndash;<include>${project.build.finalName}.jar</include>&ndash;&gt;-->
+						<!--&lt;!&ndash;</resource>&ndash;&gt;-->
+					<!--&lt;!&ndash;</resources>&ndash;&gt;-->
+				<!--&lt;!&ndash;</configuration>&ndash;&gt;-->
+			<!--</plugin>-->
+
 
 
 		</plugins>
