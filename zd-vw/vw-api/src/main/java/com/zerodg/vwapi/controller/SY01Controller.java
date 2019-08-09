@@ -105,6 +105,7 @@ public class SY01Controller {
         jsonResult.setData(articleList);
         return jsonResult;
     }
+
     @ApiOperation(value="首页右侧文章推荐（时间）",notes="首页右侧文章推荐（时间）",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @RequestMapping(value="/time",method= RequestMethod.GET)
     public JSONResult time(@Valid SY01TimeInputDTO input){

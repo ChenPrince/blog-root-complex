@@ -141,7 +141,7 @@ public class ArticleServiceImpl implements ArticleService {
         SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd");
         String time=dateFormat.format(date);
         System.out.println(time);
-        articleMapper.insertArticle(userId,content,title,time);
+        articleMapper.insertArticle(userId,content,time,title);
     }
 
 }

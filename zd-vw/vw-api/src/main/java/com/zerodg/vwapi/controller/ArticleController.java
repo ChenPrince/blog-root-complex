@@ -6,7 +6,9 @@ package com.zerodg.vwapi.controller;
 
 
 import com.zerodg.service.ArticleService;
+import com.zerodg.service.SY01Service;
 import com.zerodg.vwentity.dto.Article.*;
+import com.zerodg.vwentity.dto.SY.SY01ArticleDTO;
 import com.zerodg.zdutil.util.JSONResult;
 import com.zerodg.zdutil.util.Message;
 import io.swagger.annotations.Api;
@@ -33,7 +35,34 @@ public class ArticleController {
 
     @Autowired
     private ArticleService articleService;
+    @Autowired
+    private SY01Service sy01Service;
 
+
+    /**
+     * 通过文章id获取文章具体内容
+     * @param articleContentInputDTO
+     * @return
+     */
+    @ApiOperation(value = "获取文章详情",notes = "根据文章的id来获取文章的基本信息")
+    // @ApiImplicitParam(name = "id",value = "文章id",required = true,dataType = "String",paramType = "path")
+    @RequestMapping(value = "/articleHomeList",method = RequestMethod.GET)
+    public JSONResult getArticleHomeList(){
+        JSONResult<SY01ArticleDTO> jsonResult=new JSONResult<>();
+
+
+        SY01ArticleDTO list =new SY01ArticleDTO();
+        list=sy01Service.getArticleList();
+        if(list!=null)
+        {
+            jsonResult.setData(list);
+            jsonResult.setMessage(new Message("首页文章内容查找成功"));
+            return jsonResult;
+        }else {
+            jsonResult.setMessage(new Message("首页文章内容查找为空"));
+            return jsonResult;
+        }
+    }
 
     /**
      * 通过文章id获取文章具体内容

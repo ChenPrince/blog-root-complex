@@ -1,0 +1,32 @@
+{
+  "list": [{
+    "SYS_MODULAR_ID": 999,
+    "NAME": "调查问卷",
+    "MODULAR_TYPE_CD": 1,
+    "SYS_SYS_MODULAR_ID": null,
+    "URI": "www.baidu.com",
+    "children": []
+  },
+    {
+      "SYS_MODULAR_ID": 1000,
+      "NAME": "资源管理",
+      "MODULAR_TYPE_CD": 2,
+      "SYS_SYS_MODULAR_ID": null,
+      "URI": " ",
+      "children": [{
+        "SYS_MODULAR_ID": 1001,
+        "NAME": "地址资源",
+        "MODULAR_TYPE_CD": 2,
+        "SYS_SYS_MODULAR_ID": 1000,
+        "URI": " ",
+        "children": [{
+          "SYS_MODULAR_ID": 1011,
+          "NAME": "标准地址",
+          "MODULAR_TYPE_CD": 2,
+          "SYS_SYS_MODULAR_ID": 1001,
+          "URI": "www.taobao.com",
+          "children": []
+        }]
+      }]
+    }]
+}

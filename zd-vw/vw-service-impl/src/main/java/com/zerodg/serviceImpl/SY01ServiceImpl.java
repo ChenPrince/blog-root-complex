@@ -54,24 +54,24 @@ public class SY01ServiceImpl implements SY01Service {
     @Override
     public SY01ArticleDTO getArticleList() {
         SY01ArticleDTO lists=new SY01ArticleDTO();
-        List<Article> Articlelists=articleMapper.selectAll();
+        List<Article> articleLists=articleMapper.selectAll();
 
 
-        for (Article articlelist : Articlelists) {
+        for (Article article : articleLists) {
             //对文章内容进行处理
-            if (articlelist.getContent().length() >25 ) {
-                articlelist.setContent(articlelist.getContent().substring(0, 25) + "....");
+            if (article.getContent().length() >60 ) {
+                article.setContent(article.getContent().substring(0, 60) + "....");
             }
             //添加用户名
-            User user = userMapper.selectByPrimaryKey(articlelist.getUserId());
-            articlelist.setUserName(user.getUserName());
+            User user = userMapper.selectByPrimaryKey(article.getUserId());
+            article.setUserName(user.getUserName());
 
             //处理时间
             SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
-            String str=sf.format(articlelist.getCreateAt());
-            articlelist.setCreateTime(str);
+            String str=sf.format(article.getCreateAt());
+            article.setCreateTime(str);
         }
-        lists.setArticleList(Articlelists);
+        lists.setArticleList(articleLists);
 
 
         return lists;
@@ -82,11 +82,11 @@ public class SY01ServiceImpl implements SY01Service {
     public SY01SortDTO getSortList() {
         SY01SortDTO lists=new SY01SortDTO();
 
-        List<Article> articlelists=articleMapper.selectSort();
+        List<Article> articleLists=articleMapper.selectSort();
         List<String> stringList=new ArrayList<>();
-        for (Article articlelist : articlelists) {
+        for (Article articleList : articleLists) {
 
-            stringList.add(articlelist.getSort());
+            stringList.add(articleList.getSort());
         }
 
         lists.setListSort(stringList);
@@ -104,10 +104,10 @@ public class SY01ServiceImpl implements SY01Service {
     public List<Article> selectBySort(String sort) {
 
         List<Article> articleLists = articleMapper.selectBySort(sort);
-        for (Article articlelist : articleLists) {
+        for (Article articleList : articleLists) {
             //对文章内容进行处理
-            if (articlelist.getContent().length() > 25) {
-                articlelist.setContent(articlelist.getContent().substring(0, 25) + "....");
+            if (articleList.getContent().length() > 25) {
+                articleList.setContent(articleList.getContent().substring(0, 25) + "....");
             }
         }
         return articleLists;
