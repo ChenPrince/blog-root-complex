@@ -1,0 +1,15 @@
+2019-10-09 18:24:07.170 [main] INFO  com.zerodg.zdtylin.ZdTylinApplication - Starting ZdTylinApplication on LAPTOP-5OTDB6PU with PID 7904 (started by ztz-prince in F:\【01】TYLI\【06】TYLI_codeObject\【01】TYLI_Compelet_project\qfsx-root)
+2019-10-09 18:24:07.176 [main] INFO  com.zerodg.zdtylin.ZdTylinApplication - The following profiles are active: dev
+2019-10-09 18:24:08.842 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-10-09 18:28:27.639 [main] INFO  com.zerodg.zdtylin.ZdTylinApplication - Starting ZdTylinApplication on LAPTOP-5OTDB6PU with PID 23436 (started by ztz-prince in F:\【01】TYLI\【06】TYLI_codeObject\【01】TYLI_Compelet_project\qfsx-root)
+2019-10-09 18:28:27.647 [main] INFO  com.zerodg.zdtylin.ZdTylinApplication - The following profiles are active: dev
+2019-10-09 18:28:30.277 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-10-09 18:28:47.748 [main] INFO  com.zerodg.zdtylin.ZdTylinApplication - Starting ZdTylinApplication on LAPTOP-5OTDB6PU with PID 19136 (started by ztz-prince in F:\【01】TYLI\【06】TYLI_codeObject\【01】TYLI_Compelet_project\qfsx-root)
+2019-10-09 18:28:47.755 [main] INFO  com.zerodg.zdtylin.ZdTylinApplication - The following profiles are active: dev
+2019-10-09 18:28:50.606 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.

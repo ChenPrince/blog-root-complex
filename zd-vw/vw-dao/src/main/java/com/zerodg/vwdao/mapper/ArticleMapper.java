@@ -26,5 +26,5 @@ public interface ArticleMapper {
 
     Integer selectUserId(Integer id);
 
-    void insertArticle(@Param("userId")Integer userId,@Param("content")String content,@Param("time")String time,@Param("title")String title);
+    void insertArticle(@Param("userId")Integer userId,@Param("content")String content,@Param("time")String time,@Param("title")String title,@Param("articleType") String articleType);
 }

@@ -58,9 +58,18 @@ public class SY01ServiceImpl implements SY01Service {
 
 
         for (Article article : articleLists) {
+
+            //去掉标签
+            String htmlRegex="<[^>]+>";
+            String content=article.getContent().replaceAll(htmlRegex,"");
+            System.out.println(content);
+            article.setContent(content);
             //对文章内容进行处理
-            if (article.getContent().length() >60 ) {
-                article.setContent(article.getContent().substring(0, 60) + "....");
+//            if (article.getContent().length() >60 ) {
+//                article.setContent(article.getContent().substring(0, 60) + "....");
+//            }
+            if (content.length() >60 ) {
+                article.setContent(content.substring(0, 60) + "....");
             }
             //添加用户名
             User user = userMapper.selectByPrimaryKey(article.getUserId());

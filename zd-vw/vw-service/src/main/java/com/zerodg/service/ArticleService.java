@@ -23,5 +23,5 @@ public interface ArticleService {
 
     ArticleAuthorDTO getUserById(Integer user_id);
 
-    void insertArticle(Integer userId, String title, String content);
+    void insertArticle(Integer userId, String title, String content,String articleType);
 }

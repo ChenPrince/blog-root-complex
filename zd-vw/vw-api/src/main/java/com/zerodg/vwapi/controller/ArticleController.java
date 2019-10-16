@@ -14,10 +14,7 @@ import com.zerodg.zdutil.util.Message;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -75,7 +72,7 @@ public class ArticleController {
     public JSONResult getArticleById(@Valid ArticleContentInputDTO articleContentInputDTO){
         JSONResult<ArticleContentDTO> jsonResult=new JSONResult<>();
 
-        //System.out.println("1id=="+articleContentInputDTO.getId());
+
         ArticleContentDTO article=articleService.getArticleId(articleContentInputDTO.getId());
         if(article!=null)
         {
@@ -140,18 +137,23 @@ public class ArticleController {
             return jsonResult;
         }
     }
-    @ApiOperation(value = "插入文章",notes = "插入文章")
-    @RequestMapping(value = "/insertArticle",method = RequestMethod.GET)
-    public JSONResult insertArticle(@Valid ArticleInsertDTO input) {
+
+
+    @ApiOperation(value = "发布文章",notes = "发布文章")
+    //网上说不写这个可以同时支持post和get 请求  , method = RequestMethod.GET
+    @RequestMapping(value = "/publishArticle", method = RequestMethod.POST)
+    public JSONResult publishArticle(@RequestBody ArticleInsertDTO input) {
         JSONResult jsonResult = new JSONResult();
+        System.out.println(input.getContent()+input.getTitle()+input.getUserId());
         Integer userId = input.getUserId();
         String title = input.getTitle();
         String content = input.getContent();
 
-        articleService.insertArticle(userId,title,content);
+        articleService.insertArticle(userId,title,content,input.getArticleType());
 
         jsonResult.setMessage("添加成功");
         return jsonResult;
     }
+
 
 }

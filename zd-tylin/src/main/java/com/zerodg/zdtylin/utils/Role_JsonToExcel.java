@@ -1,7 +1,5 @@
-package com.zerodg.zdutil.util.JsonToExcel;
+package com.zerodg.zdtylin.utils;
 
-
-import jdk.nashorn.api.scripting.JSObject;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.io.FileUtils;
@@ -10,31 +8,28 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-
-
 
 import java.io.*;
 import java.util.Scanner;
 
 /**
- * @program: qfsx_root
- * @description: 导出excel
+ * @program: eroot
+ * @description:
  * @author: ztz-prince
  * @create:
- * @date:2019-08-07-11:17
+ * @date:2019-08-15-10:08
  **/
-public class ExportExcel {
+public class Role_JsonToExcel {
 
     //    json读取路径
     private String JSON_PATH = null;
-    private String OUT_PATH = "C:/Users/ztz-prince/Desktop/test.xlsx";
+    private String OUT_PATH = "C:/Users/ztz-prince/Desktop/output.xlsx";
 
-    public ExportExcel(){
+    public Role_JsonToExcel(){
 
     }
 
-    public ExportExcel(String JSON_PATH){
+    public Role_JsonToExcel(String JSON_PATH){
         this.JSON_PATH=JSON_PATH;
     }
 
@@ -55,6 +50,7 @@ public class ExportExcel {
      * 执行导出
      * @return
      */
+    @SuppressWarnings("Duplicates")
     public Boolean executeExport(){
 
         if(JSON_PATH==null){
@@ -83,21 +79,22 @@ public class ExportExcel {
                     JSONObject resourcesModularOBJ = resourcesModular.getJSONObject(j);
 
                     String resourceId = resourcesModularOBJ.get("id")==null?"/":resourcesModularOBJ.get("id").toString();
-                    String resourceUserName = resourcesModularOBJ.get("userName")==null?"/":resourcesModularOBJ.get("userName").toString();
+                    String resourceName = resourcesModularOBJ.get("name")==null?"/":resourcesModularOBJ.get("name").toString();
                     String resourceDisplayName = resourcesModularOBJ.get("displayName")==null?"/":resourcesModularOBJ.get("displayName").toString();
 
                     //获取下一层
-                    JSONArray rolesModular = (JSONArray) resourcesModularOBJ.get("roles");
+                    JSONArray membersModular = (JSONArray) resourcesModularOBJ.get("members");
 
                     //若不存在role就读取下一个
-                    if(rolesModular==null){
+                    if(membersModular==null){
                         //创建当前行
                         XSSFRow row = sheet.createRow(colunm);
                         //这三个要纵向合并
                         XSSFCell cell_resourceId = row.createCell(0);
                         cell_resourceId.setCellValue(resourceId);
+
                         XSSFCell cell_resourceUserName = row.createCell(1);
-                        cell_resourceUserName.setCellValue(resourceUserName);
+                        cell_resourceUserName.setCellValue(resourceName);
                         XSSFCell cell_resourceDisplayName = row.createCell(2);
                         cell_resourceDisplayName.setCellValue(resourceDisplayName);
                         colunm++;
@@ -106,58 +103,54 @@ public class ExportExcel {
                     }
                     //遍历下一层
                     int firstCol=colunm;
-                    if(rolesModular.size()>0){
+                    if(membersModular.size()>0){
                         //遍历roles
                         System.out.println("==>遍历roles");
 
                         try{
                             // 合并重复声明的cell
-                            System.out.println("firstCol:"+firstCol+"-lastCol:"+(colunm+rolesModular.size()));
-                            sheet.addMergedRegion(new CellRangeAddress(firstCol, colunm+rolesModular.size(),0,0));//起始行号，终止行号， 起始列号，终止列号
-                            sheet.addMergedRegion(new CellRangeAddress(firstCol, colunm+rolesModular.size(),1,1));
-                            sheet.addMergedRegion(new CellRangeAddress(firstCol, colunm+rolesModular.size(),2,2));
+                            System.out.println("firstCol:"+firstCol+"-lastCol:"+(colunm+membersModular.size()));
+                            sheet.addMergedRegion(new CellRangeAddress(firstCol, colunm+membersModular.size(),0,0));//起始行号，终止行号， 起始列号，终止列号
+                            sheet.addMergedRegion(new CellRangeAddress(firstCol, colunm+membersModular.size(),1,1));
+                            sheet.addMergedRegion(new CellRangeAddress(firstCol, colunm+membersModular.size(),2,2));
                             System.out.println("****合并成功");
 
                         }catch(Exception e){
-                            System.out.println("错误提示：（1）单元格合并有冲突,");
+                            System.out.println("错误提示：单元格合并有冲突,");
                             System.out.println(e.getMessage());
                             Scanner sc=new Scanner(System.in);
                             sc.nextInt();
                             continue;
                         }
-                        for(int k=0;k<rolesModular.size();k++){
+                        for(int k=0;k<membersModular.size();k++){
                             System.out.println("-->当前role["+k+"]");
-                            JSONObject rolesModularOBJ = rolesModular.getJSONObject(k);
-                            String rolesId = rolesModularOBJ.get("id")==null?"/":rolesModularOBJ.get("id").toString();
-                            String rolesValue = rolesModularOBJ.get("value")==null?"/":rolesModularOBJ.get("value").toString();
-                            String roleDisplayName = rolesModularOBJ.get("displayName")==null?"/":rolesModularOBJ.get("displayName").toString();
+                            JSONObject membersModularOBJ = membersModular.getJSONObject(k);
+                            String membersValue = membersModularOBJ.get("value")==null?"/":membersModularOBJ.get("value").toString();
 
                             //写入输出流
                             XSSFRow row = sheet.createRow(colunm);
                             XSSFCell cell_resourceId = row.createCell(0);
                             cell_resourceId.setCellValue(resourceId);
                             XSSFCell cell_resourceUserName = row.createCell(1);
-                            cell_resourceUserName.setCellValue(resourceUserName);
+                            cell_resourceUserName.setCellValue(resourceName);
                             XSSFCell cell_resourceDisplayName = row.createCell(2);
                             cell_resourceDisplayName.setCellValue(resourceDisplayName);
 
 
-                            XSSFCell cell_rolesId = row.createCell(3);
-                            cell_rolesId.setCellValue(rolesId);
-                            XSSFCell cell_rolesValue = row.createCell(4);
-                            cell_rolesValue.setCellValue(rolesValue);
-                            XSSFCell cell_roleDisplayName = row.createCell(5);
-                            cell_roleDisplayName.setCellValue(roleDisplayName);
+                            XSSFCell cell_memberValue = row.createCell(3);
+                            cell_memberValue.setCellValue(membersValue);
+
                             colunm++;
                         }
                         colunm++;
                     }
                     else{
                         XSSFRow row = sheet.createRow(colunm);
+
                         XSSFCell cell_resourceId = row.createCell(0);
                         cell_resourceId.setCellValue(resourceId);
                         XSSFCell cell_resourceUserName = row.createCell(1);
-                        cell_resourceUserName.setCellValue(resourceUserName);
+                        cell_resourceUserName.setCellValue(resourceName);
                         XSSFCell cell_resourceDisplayName = row.createCell(2);
                         cell_resourceDisplayName.setCellValue(resourceDisplayName);
                         colunm++;
@@ -166,7 +159,6 @@ public class ExportExcel {
             }else{
                 colunm++;
             }
-
 
             FileOutputStream outputStream = new FileOutputStream(OUT_PATH);
             workbook.write(outputStream);
@@ -188,6 +180,7 @@ public class ExportExcel {
      * @return
      * @throws IOException
      */
+    @SuppressWarnings("Duplicates")
     private JSONObject getJsonData() throws IOException {
 
         File file = new File(JSON_PATH);

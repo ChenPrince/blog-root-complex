@@ -79,12 +79,18 @@
   </select>
 
   <insert id="insertArticle">
-    INSERT INTO article(user_id,content,create_at,title)
+    INSERT INTO article(user_id,content,create_at,title,sort,star,diss,visit)
     values (
       #{userId},
       #{content},
       #{time},
-      #{title})
+      #{title},
+      #{articleType},
+      0,
+      0,
+      0
+    )
+
   </insert>
 
 </mapper>

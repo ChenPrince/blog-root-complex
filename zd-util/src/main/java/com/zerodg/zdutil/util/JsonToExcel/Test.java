@@ -1,5 +1,9 @@
 package com.zerodg.zdutil.util.JsonToExcel;
 
+
+
+import java.io.IOException;
+
 /**
  * @program: qfsx_root
  * @description: 测试
@@ -10,10 +14,15 @@ package com.zerodg.zdutil.util.JsonToExcel;
 public class Test {
 
     public static void main(String[] args) {
-        ExportExcel  exportExcel=new ExportExcel("C:/Users/ztz-prince/Desktop/userRoles.json");
+        ExportExcel  exportExcel=new ExportExcel("C:/Users/ztz-prince/Desktop/userRoles_.json");
 
         exportExcel.executeExport();
 
 
+    }
+
+
+    public static String null2String(String var0) {
+        return var0 == null ? "" : var0;
     }
 }

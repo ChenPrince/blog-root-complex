@@ -4,6 +4,15 @@ public class ArticleInsertDTO {
     private Integer userId;
     private String title;
     private String content;
+    private String articleType;
+
+    public String getArticleType() {
+        return articleType;
+    }
+
+    public void setArticleType(String articleType) {
+        this.articleType = articleType;
+    }
 
     public Integer getUserId() {
         return userId;

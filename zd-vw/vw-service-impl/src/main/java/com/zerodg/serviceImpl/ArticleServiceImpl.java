@@ -136,12 +136,12 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public void insertArticle(Integer userId, String title, String content) {
+    public void insertArticle(Integer userId, String title, String content,String articleType) {
         Date date = new Date();
         SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd");
         String time=dateFormat.format(date);
         System.out.println(time);
-        articleMapper.insertArticle(userId,content,time,title);
+        articleMapper.insertArticle(userId,content,time,title,articleType);
     }
 
 }
