@@ -62,7 +62,7 @@ public class SY01ServiceImpl implements SY01Service {
             //去掉标签
             String htmlRegex="<[^>]+>";
             String content=article.getContent().replaceAll(htmlRegex,"");
-            System.out.println(content);
+//            System.out.println(content);
             article.setContent(content);
             //对文章内容进行处理
 //            if (article.getContent().length() >60 ) {

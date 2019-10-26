@@ -1,4 +1,4 @@
-package com.zerodg.vwentity.dto.SY01SortInputDTO;
+package com.zerodg.vwentity.dto.SY.SY01Sort;
 
 import java.util.Date;
 

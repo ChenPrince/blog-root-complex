@@ -1,4 +1,4 @@
-package com.zerodg.vwentity.dto.SY01SortInputDTO;
+package com.zerodg.vwentity.dto.SY.SY01Sort;
 
 public class SY01SortInputDTO {
     private String sort;

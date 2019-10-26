@@ -11,86 +11,93 @@
     <result column="sort" property="sort" jdbcType="VARCHAR" />
     <result column="create_at" property="createAt" jdbcType="DATE" />
     <result column="title" property="title" jdbcType="VARCHAR" />
-
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from article
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.zerodg.vwentity.entity.Article" >
-    insert into article (id, user_id, star, 
-      diss, visit, content, 
-      sort, create_at)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{star,jdbcType=INTEGER}, 
-      #{diss,jdbcType=INTEGER}, #{visit,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
-      #{sort,jdbcType=VARCHAR}, #{createAt,jdbcType=DATE})
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.zerodg.vwentity.entity.Article" >
-    update article
-    set user_id = #{userId,jdbcType=INTEGER},
-      star = #{star,jdbcType=INTEGER},
-      diss = #{diss,jdbcType=INTEGER},
-      visit = #{visit,jdbcType=INTEGER},
-      content = #{content,jdbcType=VARCHAR},
-      sort = #{sort,jdbcType=VARCHAR},
-      create_at = #{createAt,jdbcType=DATE}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select id, user_id, star, diss, visit, content, sort, create_at, title
-    from article
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
-    select id, user_id, star, diss, visit, content, sort, title, create_at
-    from article
-  </select>
 
-  <select id="selectBySort" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select *
-    from article
-    where sort=#{value}
-  </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from article
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.zerodg.vwentity.entity.Article" >
+        insert into article (id, user_id, star,
+          diss, visit, content,
+          sort, create_at)
+        values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{star,jdbcType=INTEGER},
+          #{diss,jdbcType=INTEGER}, #{visit,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR},
+          #{sort,jdbcType=VARCHAR}, #{createAt,jdbcType=DATE})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.zerodg.vwentity.entity.Article" >
+        update article
+        set user_id = #{userId,jdbcType=INTEGER},
+          star = #{star,jdbcType=INTEGER},
+          diss = #{diss,jdbcType=INTEGER},
+          visit = #{visit,jdbcType=INTEGER},
+          content = #{content,jdbcType=VARCHAR},
+          sort = #{sort,jdbcType=VARCHAR},
+          create_at = #{createAt,jdbcType=DATE}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select id, user_id, star, diss, visit, content, sort, create_at, title
+        from article
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap" >
+        select id, user_id, star, diss, visit, content, sort, title, create_at
+        from article
+    </select>
 
-  <select id="selectArticleByTime" resultMap="BaseResultMap">
-    SELECT title,id
-    from article
-    ORDER BY create_at
-  </select>
+    <select id="selectBySort" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select *
+        from article
+        where sort=#{value}
+    </select>
 
-  <select id="selectArticleByStar" resultMap="BaseResultMap">
-    SELECT title,id
-    from article
-    ORDER BY star
-  </select>
+    <select id="selectArticleByTime" resultMap="BaseResultMap">
+        SELECT title,id
+        from article
+        ORDER BY create_at
+    </select>
 
-  <!--文章分类信息-->
-  <select id="selectSort" resultMap="BaseResultMap" >
-    SELECT sort
-    FROM article
-    GROUP BY sort
-  </select>
+    <select id="selectArticleByStar" resultMap="BaseResultMap">
+        SELECT title,id
+        from article
+        ORDER BY star
+    </select>
 
-  <!--获取文章的作者id-->
-  <select id="selectUserId" resultType="java.lang.Integer" parameterType="java.lang.Integer">
-    SELECT user_id
-    FROM article
-    where id=#{value}
-  </select>
+    <!--文章分类信息-->
+    <select id="selectSort" resultMap="BaseResultMap" >
+        SELECT sort
+        FROM article
+        GROUP BY sort
+    </select>
 
-  <insert id="insertArticle">
-    INSERT INTO article(user_id,content,create_at,title,sort,star,diss,visit)
-    values (
-      #{userId},
-      #{content},
-      #{time},
-      #{title},
-      #{articleType},
-      0,
-      0,
-      0
-    )
+    <!--获取文章的作者id-->
+    <select id="selectUserId" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+        SELECT user_id
+        FROM article
+        where id=#{value}
+    </select>
 
-  </insert>
+    <insert id="insertArticle">
+        INSERT INTO article(user_id,content,create_at,title,sort,star,diss,visit)
+        values (
+          #{userId},
+          #{content},
+          #{time},
+          #{title},
+          #{articleType},
+          0,
+          0,
+          0
+        )
+
+    </insert>
+
+    <select id="selectArticleByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select id, user_id, star, diss, visit, content, sort, create_at, title
+        from article
+        where user_id = #{user_id,jdbcType=INTEGER}
+    </select>
+
 
 </mapper>

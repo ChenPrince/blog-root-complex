@@ -22,9 +22,14 @@ public interface ArticleMapper {
 
     List<Article> selectArticleByStar();
 
+    List<Article> selectArticleByUserId(@Param("user_id") Integer userId);
+
     List<Article> selectSort();
 
     Integer selectUserId(Integer id);
 
     void insertArticle(@Param("userId")Integer userId,@Param("content")String content,@Param("time")String time,@Param("title")String title,@Param("articleType") String articleType);
+
+
+
 }

@@ -4,11 +4,10 @@ import com.zerodg.service.SY01Service;
 import com.zerodg.vwentity.dto.SY.SY01ArticleDTO;
 import com.zerodg.vwentity.dto.SY.SY01SlideshowDTO;
 import com.zerodg.vwentity.dto.SY.SY01SortDTO;
-import com.zerodg.vwentity.dto.SY01LoveInputDTO.SY01LoveInputDTO;
-import com.zerodg.vwentity.dto.SY01SortInputDTO.SY01SortInputDTO;
-import com.zerodg.vwentity.dto.SY01TimeInputDTO.SY01TimeInputDTO;
+import com.zerodg.vwentity.dto.SY.SY01LoveInputDTO.SY01LoveInputDTO;
+import com.zerodg.vwentity.dto.SY.SY01Sort.SY01SortInputDTO;
+import com.zerodg.vwentity.dto.SY.SY01TimeInputDTO.SY01TimeInputDTO;
 import com.zerodg.vwentity.entity.Article;
-import com.zerodg.vwentity.entity.Carousel;
 import com.zerodg.zdutil.util.JSONResult;
 import com.zerodg.zdutil.util.Message;
 import io.swagger.annotations.Api;
@@ -21,11 +20,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * create by Administrator on 13:07 2019/6/25 0025
+ * 首页
  */
 @RestController
 @Api(description = "显示首页")
